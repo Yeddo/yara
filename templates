@@ -1,0 +1,49 @@
+
+rule MaliciousFileDetection
+{
+    meta:
+        description = "Detects a specific malicious file by its hash"
+        author = "Your Name"
+        date = "2024-08-23"
+        version = "1.0"
+        
+    strings:
+        $md5 = "e99a18c428cb38d5f260853678922e03" 
+        $sha1 = "c157a79031e1c40f85931829bc5fc552" 
+        
+    condition:
+        any of them
+}
+
+rule SuspiciousStringMatch
+{
+    meta:
+        description = "Detects suspicious strings within files"
+        author = "Your Name"
+        date = "2024-08-23"
+        version = "1.0"
+        
+    strings:
+        $string1 = "cmd.exe /c" 
+        $string2 = "powershell -encodedcommand"
+        $string3 = "wget http"
+        
+    condition:
+        any of them
+}
+
+rule AnomalousBehaviorDetection
+{
+    meta:
+        description = "Detects anomalous behavior based on known indicators"
+        author = "Your Name"
+        date = "2024-08-23"
+        version = "1.0"
+        
+    strings:
+        $indicator1 = { 6A 40 68 00 30 00 00 6A 14 8D 91 }
+        $indicator2 = { 68 29 00 00 00 FF D0 }
+        
+    condition:
+        any of them
+}
